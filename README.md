@@ -69,11 +69,130 @@ Questions can broadly classified into two kinds. First one is descriptive questi
 * Flask API (For Machine Learning)
 
 ---
-## Website
----
-## Flutter Application
----
 ## Node API
+> Api returns answers to questions from the database based on category 
+
+## Features
+* System architecture – MVC architecture.
+* Backend server environment – Node.js
+* Backend Framework – Express
+* Database - MongoDB
+
+## Routes
+* ```{url}/language```
+
+  * Request type - **GET**
+  
+  * Response Status - 200
+  
+  * Response
+    ```json
+    {
+        "language":[
+            {
+                "lang_code":"en",
+                "lang_name":"English",
+                "lang_url":"https://charbase.com/images/glyph/65"
+            },
+            {
+                "lang_code":"kn",
+                "lang_name":"ಕನ್ನಡ",
+                "lang_url":"https://charbase.com/images/glyph/3221"
+            },
+            {
+                "lang_code":"te",
+                "lang_name":"తెలుగు",
+                "lang_url":"https://charbase.com/images/glyph/3093"
+            },
+            {
+                "lang_code":"ta",
+                "lang_name":"தமிழ்",
+                "lang_url":"https://charbase.com/images/glyph/2965"
+            },
+            {
+                "lang_code":"ml",
+                "lang_name":"മലയാളം",
+                "lang_url":"https://charbase.com/images/glyph/3349"
+            },
+            {
+                "lang_code":"hi",
+                "lang_name":"हिन्दी",
+                "lang_url":"https://charbase.com/images/glyph/2325"
+            }
+        ]
+    }
+    ```
+
+* ```{url}/category```
+
+  * Request type - **GET**
+  * Body 
+    ```json
+    {
+      "language":"en",
+    }
+    ```
+  
+  * Response Status - 200
+  
+  * Response
+    ```json
+    {
+        "category":[
+            {
+                "category_id":1,
+                "category_name":"Symptoms",
+                "category_url":"https://hotemoji.com/images/emoji/4/tgkksjy74i44.png"
+            },
+            {
+                "category_id":2,
+                "category_name":"Modes of disease spread",
+                "category_url":"https://hotemoji.com/images/emoji/e/1gqjxj8a6hhe.png"
+            },
+            {
+                "category_id":3,
+                "category_name":"Precautions",
+                "category_url":"https://latestchika.com/wp-content/uploads/2020/03/handwash-1068x620.png"
+            },
+            {
+                "category_id":4,
+                "category_name":"Cures",
+                "category_url":"https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/pill.png"
+            },
+            {
+                "category_id":5,
+                "category_name":"About Corona",
+                "category_url":"https://www.statnews.com/wp-content/uploads/2020/02/Coronavirus-CDC-768x432.jpg"
+            }
+        ]
+    }
+    ```
+
+* ```{url}/```
+
+  * Request type - **POST**
+  
+  * Body 
+    ```json
+    {
+      "answer":"what symptoms of virus",
+      "chain":"true",
+      "question_id":2
+    }
+    ```
+  
+  * Response Status - 201
+  
+  * Response
+    ```json
+    {
+      "language":"en",
+      "category":"1",
+      "ques":"COVID-19 affects different people in different ways. Most infected people will develop mild to moderate symptoms. Common symptoms: fever, tiredness, dry cough. Some people may experience: aches and pains, nasal congestion, runny nose, sore throat, diarrhoea",
+      "chain":true,
+      "previous_question":1
+    }
+    ```
 ---
 
 ## Flask API
