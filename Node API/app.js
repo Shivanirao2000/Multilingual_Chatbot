@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -13,7 +14,7 @@ app.use(bodyParser.json());
 
 var option={};
 
-mongoose.connect('mongodb+srv://chatbot:api@cluster0-2iquv.mongodb.net/test?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://chatbot:'+process.env.MONGO_DB_PASSWORD+'@cluster0-2iquv.mongodb.net/test?retryWrites=true&w=majority',{
     // useMongoClient: true
     useUnifiedTopology: true,
 	useNewUrlParser: true,
